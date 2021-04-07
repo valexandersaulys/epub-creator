@@ -1,0 +1,12 @@
+body {
+}
+
+form input {
+    display: block;
+    margin: 16px 0;
+}
+
+input[type=submit] {
+    padding: 16px;
+}
+

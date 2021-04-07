@@ -1,0 +1,7 @@
+*~
+\#*\#
+node_modules/*
+*pyc
+*log
+old-news/*
+books/*

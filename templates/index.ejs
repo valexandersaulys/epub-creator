@@ -1,0 +1,32 @@
+<%- include("_header") %>
+<div>
+  <h2>
+    Welcome to my epub creator!
+  </h2>
+  <p>
+    Type in a list of urls separated by newlines and this site will grab them, images and all, and put them into a epub that you can download at your leisure. They will be cleaned up periodically so don't expect them to be held here. 
+  </p>
+  <p>
+    Note that anything <b>not</b> beginning with http or https will be skipped. 
+  </p>
+  <hr/>
+  <form action="" method="POST">
+    <% if(msg) { %>
+      <div style="color:red"><%= msg %></div>
+    <% } %>
+    <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+    <input placeholder="my cool new epub book" name="title" type="text" value=""/>
+    <textarea placeholder="https://vincentsaulys.com/pages/about-me.html" id="" name="listOfUrls" rows="10" style="width:100%;"></textarea>
+    <input name="" type="submit" value="Submit"/>
+  </form>
+  <hr/>
+  <div style="font-size:smaller">
+    <p>
+      <b>Notice</b>
+    </p>
+    <p>
+      This site was created by <a href="https://vincentsaulys.com/">Vincent A Saulys</a> for use by the public. The source code can be seen <a href="https://github.com/valexandersaulys/epub-creator-from-links">here on github for downloading</a>. Cheers!
+    </p>
+  </div>
+</div>
+<%- include("_footer") %>

@@ -1,0 +1,27 @@
+{
+  "name": "epub-creating-nodejs",
+  "version": "1.0.0",
+  "description": "Using",
+  "main": "index.js",
+  "scripts": {
+    "run": "nodemon server.js",
+    "start:app": "node server.js",
+    "start:worker": "node worker.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "article-parser": "^4.2.7",
+    "bull": "^3.22.0",
+    "cheerio": "*",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "csurf": "^1.11.0",
+    "epub-gen": "^0.1.0",
+    "express": "^4.17.1",
+    "jsdom": "^16.5.2",
+    "node-fetch": "^2.6.1",
+    "nodemon": "^2.0.7"
+  }
+}
