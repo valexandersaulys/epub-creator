@@ -16,10 +16,12 @@ app.use(cors());
 
 app.set("views", path.join(__dirname, "templates"));
 app.set("view engine", "ejs");
+app.locals.GOOGLE_ANALYTICS = process.env.GOOGLE_ANALYTICS;
 app.use("/static", express.static("static"));
 
 const booksDir = process.env.BOOKSDIR || path.join(__dirname, "books");
-console.log("Using dir for books:", booksDir);
+console.log("Using dir for books: ", booksDir);
+console.log("Using code for Google Analytics: ", app.locals.GOOGLE_ANALYTICS);
 
 app.get("/", csrfProtection, async (req, res) => {
   res.render("index", {
