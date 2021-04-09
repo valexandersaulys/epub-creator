@@ -5,6 +5,7 @@ const csrf = require("csurf"); // sic
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
+const morgan = require("morgan");
 
 const { epubQueue } = require("./queue-def");
 
@@ -16,8 +17,10 @@ app.use(cors());
 
 app.set("views", path.join(__dirname, "templates"));
 app.set("view engine", "ejs");
-app.locals.GOOGLE_ANALYTICS = process.env.GOOGLE_ANALYTICS;
 app.use("/static", express.static("static"));
+app.use(morgan("short"));
+
+app.locals.GOOGLE_ANALYTICS = process.env.GOOGLE_ANALYTICS;
 
 const booksDir = process.env.BOOKSDIR || path.join(__dirname, "books");
 console.log("Using dir for books: ", booksDir);

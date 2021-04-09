@@ -8,6 +8,7 @@ const booksDir = process.env.BOOKSDIR || path.join(__dirname, "books");
 console.log("Using dir for books:", booksDir);
 
 const getData = async (listOfUrls) => {
+  console.log("extracting the following list of urls", listOfUrls);
   return Promise.all(
     listOfUrls
       .filter((articleUrl) => /^(http|https):\/\/[^ "]+$/.test(articleUrl))
