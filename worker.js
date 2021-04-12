@@ -32,7 +32,7 @@ epubQueue.process(function (job, done) {
   getData(listOfUrls).then((content) => {
     content = content.filter((content) => content);
     new Epub(
-      { title, author: "vincent", content },
+      { title, author: "_", content },
       path.join(booksDir, `${outputFileName}.epub`)
     );
   });

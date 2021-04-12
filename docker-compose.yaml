@@ -26,7 +26,8 @@ services:
 
   worker:
     build: .
-    command: "npm run start:worker"  
+    command: "npm run start:worker"
+    restart: unless-stopped
     depends_on:
       - redis_db
     volumes:

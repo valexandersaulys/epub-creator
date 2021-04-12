@@ -18,6 +18,7 @@ app.use(cors());
 app.set("views", path.join(__dirname, "templates"));
 app.set("view engine", "ejs");
 app.use("/static", express.static("static"));
+app.use("/samples", express.static("samples"));
 app.use(morgan("short"));
 
 app.locals.GOOGLE_ANALYTICS = process.env.GOOGLE_ANALYTICS;
