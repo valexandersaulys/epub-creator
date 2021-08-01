@@ -4,3 +4,4 @@ COPY . /code
 WORKDIR /code
 EXPOSE $PORT
 RUN npm install
+CMD ["npm", "start:app"]

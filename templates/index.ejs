@@ -31,6 +31,17 @@
     <input name="" type="submit" value="Submit"/>
   </form>
   <hr/>
+  <div>
+    <p> You may get all URLs attached to a page below, then copy-paste -- with edit! -- above. This is useful for blogs </p>
+    <form action=""
+          hx-post="/fetchUrls"
+          hx-target="#urlsFetched"
+          hx-swapped="innerHTML">
+      <input name="urlToFetch" type="text" placeholder="https://vincentsaulys.com/" />
+      <input name="Fetch URLs" type="submit" value="Fetch URLs"/>
+    </form>
+    <textarea id="urlsFetched" name="" rows="10" style="width:100%;"></textarea>
+  </div>
   <div style="font-size:smaller">
     <p>
       <b>Notice</b>

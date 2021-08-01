@@ -4,7 +4,7 @@
   "description": "Using",
   "main": "index.js",
   "scripts": {
-    "run": "nodemon server.js",
+    "run": "PORT=3001 nodemon server.js",
     "start:app": "node server.js",
     "start:worker": "node worker.js"
   },

@@ -1,9 +1,11 @@
 const bodyParser = require("body-parser"); // included with express
 const cookieParser = require("cookie-parser");
+const cheerio = require("cheerio");
 const cors = require("cors");
-const csrf = require("csurf"); // sic
+const csrf = require("csurf");
 const express = require("express");
 const fs = require("fs");
+const got = require("got");
 const path = require("path");
 const morgan = require("morgan");
 
@@ -77,4 +79,19 @@ app.get("/d/:submitId", (req, res, next) => {
   return;
 });
 
-app.listen({ port: process.env.PORT }, async () => {});
+app.post("/fetchUrls", async (req, res) => {
+  const { urlToFetch } = req.body;
+  const gotResponse = await got(urlToFetch);
+  const $ = cheerio.load(gotResponse.body);
+  const links = $("a")
+    .map((i, el) => el.attribs.href)
+    .toArray()
+    .filter((link) => link.match(urlToFetch))
+    .join("\n");
+  res.send(links);
+  return;
+});
+
+app.listen({ port: process.env.PORT || 3001 }, () => {
+  console.log("Starting server");
+});
