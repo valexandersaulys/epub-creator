@@ -81,6 +81,9 @@ app.get("/d/:submitId", (req, res, next) => {
 
 app.post("/fetchUrls", async (req, res) => {
   const { urlToFetch } = req.body;
+  if (!urlToFetch) {
+    return res.send("ERROR: Could not Parse URL -- did you send one?");
+  }
   const gotResponse = await got(urlToFetch);
   const $ = cheerio.load(gotResponse.body);
   const links = $("a")
@@ -88,8 +91,7 @@ app.post("/fetchUrls", async (req, res) => {
     .toArray()
     .filter((link) => link.match(urlToFetch))
     .join("\n");
-  res.send(links);
-  return;
+  return res.send(links);
 });
 
 app.listen({ port: process.env.PORT || 3001 }, () => {
