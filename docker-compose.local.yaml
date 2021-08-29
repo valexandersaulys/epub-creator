@@ -13,14 +13,12 @@ services:
     ports:
       - 3001:3001
     volumes:
-      - booksvol:/books
-      # otherwise it won't work -- presumably it can't read the
-      # process variables?
-      #- ./:/code
+      - ./:/code
+      # really didn't like this for some reason 
+      #- /tmp/books:/books
     environment:
       - REDIS_URL=redis://cache
       - PORT=3001
-      - BOOKSDIR=/books
       - VIRTUAL_PORT=3001
 
 
@@ -30,13 +28,8 @@ services:
     depends_on:
       - redis_db
     volumes:
-      - booksvol:/books
-      #- ./:/code
+      - ./:/code
     environment:
       - REDIS_URL=redis://cache
-      - BOOKSDIR=/books
 
-volumes:
-  booksvol:
-    driver: local
 
