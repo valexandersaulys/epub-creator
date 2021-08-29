@@ -6,7 +6,9 @@
   "scripts": {
     "run": "PORT=3001 nodemon server.js",
     "start:app": "node server.js",
-    "start:worker": "node worker.js"
+    "start:worker": "node worker.js",
+    "dev:app": "nodemon server.js",
+    "dev:worker": "nodemon worker.js"
   },
   "keywords": [],
   "author": "",

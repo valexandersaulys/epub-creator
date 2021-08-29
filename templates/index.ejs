@@ -27,9 +27,24 @@
     <% } %>
     <input type="hidden" name="_csrf" value="<%=csrfToken%>">
     <input placeholder="my cool new epub book" name="title" type="text" value=""/>
-    <textarea placeholder="https://vincentsaulys.com/pages/about-me.html" id="" name="listOfUrls" rows="10" style="width:100%;"></textarea>
+    <textarea placeholder="https://vincentsaulys.com/pages/about-me.html" id="listOfUrls" name="listOfUrls" rows="10" style="width:100%;"></textarea>
     <input name="" type="submit" value="Submit"/>
   </form>
+  <script>
+   (() => {
+       // prepopulate the page if we have URLs
+       const existingUrls = localStorage.getItem("existingUrls");
+       const textArea = document.querySelector("#listOfUrls");
+       if (existingUrls) {
+           textArea.value = existingUrls;
+       } else {
+           textArea.addEventListener("change", event => {
+               console.log(event.target.value);
+               localStorage.setItem("existingUrls", event.target.value);
+           });
+       }
+   })();
+  </script>
   <hr/>
   <div>
     <p> You may get all URLs attached to a page below, then copy-paste -- with edit! -- above. This is useful for blogs </p>

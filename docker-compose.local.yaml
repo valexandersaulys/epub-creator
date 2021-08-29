@@ -7,35 +7,36 @@ services:
 
   app:
     build: .
-    command: "npm run start:app"
+    command: "npm run dev:app"
     depends_on:
       - redis_db
     ports:
       - 3001:3001
     volumes:
       - booksvol:/books
+      # otherwise it won't work -- presumably it can't read the
+      # process variables?
+      #- ./:/code
     environment:
       - REDIS_URL=redis://cache
       - PORT=3001
       - BOOKSDIR=/books
-      - VIRTUAL_HOST=epub-creator.vincentsaulys.com 
-      - LETSENCRYPT_HOST=epub-creator.vincentsaulys.com 
       - VIRTUAL_PORT=3001
-      - LETSENCRYPT_EMAIL=vincent@saulys.me 
 
 
   worker:
     build: .
-    command: "npm run start:worker"  
+    command: "npm run dev:worker"  
     depends_on:
       - redis_db
     volumes:
       - booksvol:/books
+      #- ./:/code
     environment:
       - REDIS_URL=redis://cache
       - BOOKSDIR=/books
 
 volumes:
   booksvol:
-
+    driver: local
 
