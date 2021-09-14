@@ -53,9 +53,13 @@
           hx-target="#urlsFetched"
           hx-swapped="innerHTML">
       <input name="urlToFetch" type="text" placeholder="https://vincentsaulys.com/" />
+      <div style="display:inline;">
+        <label for="onlyMatching">Only Return Matching URLs</label>
+        <input name="onlyMatching" type="checkbox" checked/>  
+      </div>
       <input name="Fetch URLs" type="submit" value="Fetch URLs"/>
     </form>
-    <textarea id="urlsFetched" name="" rows="10" style="width:100%;"></textarea>
+    <div id="urlsFetched" name="" rows="10" style="width:100%;font-family:monospace;"></div>
   </div>
   <div style="font-size:smaller">
     <p>
@@ -66,4 +70,11 @@
     </p>
   </div>
 </div>
+<script>
+ htmx.logger = function(elt, event, data) {
+     if(console) {
+         console.log(event, elt, data);
+     }
+ }
+</script>
 <%- include("_footer") %>

@@ -80,7 +80,7 @@ app.get("/d/:submitId", (req, res, next) => {
 });
 
 app.post("/fetchUrls", async (req, res) => {
-  const { urlToFetch } = req.body;
+  const { urlToFetch, onlyMatching } = req.body;
   if (!urlToFetch) {
     return res.send("ERROR: Could not Parse URL -- did you send one?");
   }
@@ -89,8 +89,8 @@ app.post("/fetchUrls", async (req, res) => {
   const links = $("a")
     .map((i, el) => el.attribs.href)
     .toArray()
-    .filter((link) => link.match(urlToFetch))
-    .join("\n");
+    .filter((link) => (onlyMatching == "on" ? link.match(urlToFetch) : true))
+    .join("<br>");
   return res.send(links);
 });
 
