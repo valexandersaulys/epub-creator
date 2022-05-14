@@ -20,7 +20,7 @@
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "csurf": "^1.11.0",
-    "epub-gen": "^0.1.0",
+    "epub-gen": "github:valexandersaulys/epub-gen",
     "express": "^4.17.1",
     "jsdom": "^16.5.2",
     "morgan": "^1.10.0",

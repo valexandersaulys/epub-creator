@@ -23,7 +23,6 @@ services:
       - VIRTUAL_PORT=3001
       - LETSENCRYPT_EMAIL=vincent@saulys.me 
 
-
   worker:
     build: .
     command: "npm run start:worker"

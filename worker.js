@@ -22,7 +22,7 @@ const getData = async (listOfUrls) => {
           }))
           .catch((err) => {
             console.log("error in get URL", articleUrl);
-            return;
+            return { title: "", data: "" };
           })
       )
   );
@@ -32,20 +32,17 @@ const processUrlJob = (job, done) => {
   const listOfUrls = job.data.urlString.split("\n").filter((x) => x);
   const { title, outputFileName } = job.data;
   getData(listOfUrls)
+    .then((content) => content.filter((content) => content))
     .then(async (content) => {
-      content = content.filter((content) => content);
-      console.log(content);
-      // why you no async here?!
       return new Epub(
         { title, author: "_", content },
         path.join(booksDir, `${outputFileName}.epub`)
       ).promise;
     })
     .then(() => {
-      console.log(
-        "does the path exist?",
-        fs.existsSync(path.join(booksDir, `${outputFileName}.epub`))
-      );
+      const tmpPath = path.join(booksDir, `${outputFileName}.epub`);
+      if (fs.existsSync(tmpPath)) return true;
+      else throw `Could Not Find Path -- book was not created: ${tmpPath}`;
     })
     .then(() => {
       done();

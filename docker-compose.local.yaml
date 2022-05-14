@@ -1,15 +1,14 @@
 version: "3.9"
    
 services:
-  redis_db:
+  cache:
     image: redis:alpine
-    container_name: cache
 
   app:
     build: .
     command: "npm run dev:app"
     depends_on:
-      - redis_db
+      - cache
     ports:
       - 3001:3001
     volumes:
@@ -26,7 +25,7 @@ services:
     build: .
     command: "npm run dev:worker"  
     depends_on:
-      - redis_db
+      - cache
     volumes:
       - ./:/code
     environment:
