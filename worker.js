@@ -20,11 +20,9 @@ const getData = async (listOfUrls) => {
             title: article.title,
             data: article.content
           }))
-          .catch((err) => {
-            console.log("error in get URL", articleUrl);
-            return { title: "", data: "" };
-          })
+          .catch((err) => null)
       )
+      .filter((x) => x)
   );
 };
 

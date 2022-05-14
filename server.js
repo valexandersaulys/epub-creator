@@ -38,6 +38,7 @@ app.get("/", csrfProtection, async (req, res) => {
 
 app.post("/", csrfProtection, (req, res) => {
   const outputFileName = Math.random().toString(16).substr(2, 8);
+  // const outputFileName = encodeURIComponent(req.body.title);
   if (!req.body.listOfUrls || !req.body.title)
     res.redirect(
       `/?msg=${encodeURIComponent(
