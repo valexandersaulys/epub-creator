@@ -13,6 +13,7 @@ const getData = async (listOfUrls) => {
   console.log("extracting the following list of urls", listOfUrls);
   return Promise.all(
     listOfUrls
+      .slice(0, 100)
       .filter((articleUrl) => /^(http|https):\/\/[^ "]+$/.test(articleUrl))
       .map((articleUrl) =>
         extract(articleUrl)
@@ -33,7 +34,7 @@ const processUrlJob = (job, done) => {
     .then((content) => content.filter((content) => content))
     .then(async (content) => {
       return new Epub(
-        { title, author: "_", content },
+        { title, author: "epub-creator.deferredexception.com", content },
         path.join(booksDir, `${outputFileName}.epub`)
       ).promise;
     })

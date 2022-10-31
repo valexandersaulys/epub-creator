@@ -13,8 +13,6 @@ services:
       - 3001:3001
     volumes:
       - ./:/code
-      # really didn't like this for some reason 
-      #- /tmp/books:/books
     environment:
       - REDIS_URL=redis://cache
       - PORT=3001

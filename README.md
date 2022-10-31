@@ -10,21 +10,13 @@ docker-compose build
 docker-compose up -d
 ```
 
-The images take up ~160mb. This is using alpine images so I'm not sure
-how I'd cut them down further.
-
 There are some environmental variables present as I'm using the
 excellent
 [`jwilder/nginx-proxy`](https://hub.docker.com/r/jwilder/nginx-proxy)
 to set this up [on my own
-server](https://epub-creator.vincentsaulys.com/). You can modify these
+server](https://epub-creator.deferredexception.com/). You can modify these
 to work with your own deployments. They can probably be safely
 ignored.
-
-May add [ebook-convert](https://www.npmjs.com/package/ebook-convert)
-to this someday so its more directly compatible with the mobi format
-for Kindles. 
-
 
 
 ## Odds & Ends

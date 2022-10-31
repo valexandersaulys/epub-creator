@@ -18,10 +18,10 @@ services:
       - REDIS_URL=redis://cache
       - PORT=3001
       - BOOKSDIR=/books
-      - VIRTUAL_HOST=epub-creator.vincentsaulys.com 
-      - LETSENCRYPT_HOST=epub-creator.vincentsaulys.com 
+      - VIRTUAL_HOST=
+      - LETSENCRYPT_HOST=
       - VIRTUAL_PORT=3001
-      - LETSENCRYPT_EMAIL=vincent@saulys.me 
+      - LETSENCRYPT_EMAIL=
 
   worker:
     build: .
